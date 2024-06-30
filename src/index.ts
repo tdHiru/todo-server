@@ -5,12 +5,13 @@ import type { Todo } from "./types/Todo";
 import { handlePrismaError } from "./handler/PrismaErrorHandler";
 import cors from "cors";
 import moment from "moment";
+import { FRONT_URL } from "./consistants/url";
 
 const prisma = new PrismaClient();
 const app: Express = express();
 const PORT = 8080;
 const corsOptions = {
-    origin: "http://localhost:3000",
+    origin: FRONT_URL,
 };
 
 const myLogger = (req: Request, res: Response, next: NextFunction) => {
