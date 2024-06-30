@@ -32,11 +32,6 @@ app.get("/alltodos", async (req: Request, res: Response, next: NextFunction) => 
     } catch (e) {
         next(e);
     }
-    //console.log(allTodos);
-    // const resBody:String[] = ["<ul>"];
-    // allTodos.forEach((todo:Todo) =>{ resBody.push(`<li> ${todo.title}:${todo.isCompleted ? "完了" : "未完了"}</li>` )})
-    // resBody.push("</ul>");
-    // return res.send(`${resBody.join("")}`);
 });
 
 app.post("/createtodo", async (req: Request, res: Response, next: NextFunction) => {
@@ -57,7 +52,6 @@ app.post("/createtodo", async (req: Request, res: Response, next: NextFunction) 
 app.put("/updatetodo", async (req: Request, res: Response, next: NextFunction) => {
     try{
         const _todo:Todo = req.body;
-        // console.log(_todo);
         const updatedTodo = await prisma.todo.update({
             where: {
                 id: _todo.id
